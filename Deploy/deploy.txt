@@ -1,0 +1,3 @@
+1. Create MySQL database: Run CatenateDB.sql.
+2. Run PhoneBook project in GlassFish server
+3. Run application: Call http://localhost:8080/PhoneBook/WEB-INF/lib/jqgrid/phones.html
