@@ -34,7 +34,10 @@
 	    	caption:"",
 	    	editurl: 'http://localhost:8080/PhoneBook/rs/phonebook'
 	    	});
-		//$("#jqGrid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: true });
+    	$("#bedata").click(function(){
+    		jQuery("#editgrid").jqGrid('editGridRow',"new",{height:280,reloadAfterSubmit:false});
+    	});
+		$("#jqGrid").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: true });
 
 		$('#jqGrid').jqGrid('navGrid', '#jqGridPager',
 		    {
@@ -46,34 +49,7 @@
 	   			addtext: "Add",
 	   			edittext: "Edit",
 	   			deltext:"Delete"
-		    },
-        {   //EDIT
-            //                       height: 300,
-            //                       width: 400,
-            //                       top: 50,
-            //                       left: 100,
-            //                       dataheight: 280,
-            closeOnEscape: true,//Closes the popup on pressing escape key
-            reloadAfterSubmit: true,
-            drag: true,
-            afterSubmit: function (response, postdata) {
-                if (response.responseText == "") {
-
-                    $(this).jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid');//Reloads the grid after edit
-                    return [true, '']
-                }
-                else {
-                    $(this).jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid'); //Reloads the grid after edit
-                    return [false, response.responseText]//Captures and displays the response text on th Edit window
-                }
-            },
-            editData:  function () {
-                    var sel_id = $('#jqGrid').jqGrid('getGridParam', 'selrow');
-                    var value = $('#jqGrid').jqGrid('getCell', sel_id, '_id');
-                    return value;
-                }
-        },
-        {url: 'http://localhost:8080/PhoneBook/rs/phonebook', closeAfterAdd: true }
+		    }
 		);
 		
     });      
